@@ -35,7 +35,7 @@ int main() {
 
 **************************************************
 
-At the competition - e16_isuri solution.py
+At the competition - e17_isuri solution.py
 --------------------------------------------------
 
 t=int(input())
