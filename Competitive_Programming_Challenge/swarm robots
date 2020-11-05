@@ -1,0 +1,37 @@
+Problem Authour: Rusiru Thushara (E/16/369)
+https://www.hackerrank.com/contests/competitive-programming-challange/challenges/swarm-robots
+
+*********************************************************
+Authour's sloution.py
+---------------------------------------------------------
+
+for _ in range(int(input())):
+    n = int(input())
+    ans = 0
+    for i in range(n//2):
+        ans += ((n-2*i-1) * 4)*(n//2-i)
+    print(ans)
+
+*********************************************************
+
+At the competition time : by e17_sathira solution.cpp
+---------------------------------------------------------
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        ll res = 0;
+        for (ll i = 1; i <= n / 2; i++)
+            res += i * i;
+        cout << res * 8 << endl;
+    }
+    return 0;
+}
+
+**********************************************************

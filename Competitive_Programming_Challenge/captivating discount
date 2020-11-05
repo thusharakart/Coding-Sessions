@@ -1,0 +1,59 @@
+# Problem Authour: Rusiru Thushara (E/16/369)
+https://www.hackerrank.com/contests/competitive-programming-challange/challenges/interesting-subarray
+
+**************************************************
+Authour's solution.cpp
+--------------------------------------------------
+#include <bits/stdc++.h>
+using namespace std;
+#define For(i,a,n) for(int i=a; i<n; ++i)
+typedef long long ll;
+
+int main() {
+
+    ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+
+    int t,n,x; cin >> t;
+
+    For(i,0,t){
+        cin >> n >> x;
+        int a, l=-1, r, sum=0;
+        For(i,1,n+1) {
+            cin >> a;
+            if(a%x){
+                if(l==-1) l=i;
+                r=i;
+            }
+            sum += a;
+        }
+        if(sum%x) cout << n << endl;
+        else if(l==-1) cout << -1 << endl;
+        else cout << n-min(l,n-r+1) << endl;
+    }
+    return 0;
+}
+
+**************************************************
+
+At the competition - e16_isuri solution.py
+--------------------------------------------------
+
+t=int(input())
+for i in range(t):
+    n,k=list(map(int,input().strip().split()))
+    food=list(map(int,input().strip().split()))
+    bill=0
+    i=0
+    count=0
+    while(len(food)!=0 or count!=0):
+        if(sum(food)%k ==0):
+            del food[-1]
+        else:
+            count=len(food)
+            break
+    if (count==0):
+        print(-1)
+    else:
+        print(count)
+        
+*********************************************************

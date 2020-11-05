@@ -1,0 +1,41 @@
+Problem Authour: Rusiru Thushara (E/16/369)
+https://www.hackerrank.com/contests/competitive-programming-challange/challenges/dazzling-permutation
+
+*********************************************************
+Authour's sloution.cpp
+---------------------------------------------------------
+
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp> 
+#define For(i,a,n) for(int i=a; i<n; ++i)
+typedef long long ll;
+using namespace std;
+using namespace __gnu_pbds;
+const int N = 500000;
+ll A[N], P[N], n, ans;
+typedef tree<ll, null_type, less<ll>, 
+    rb_tree_tag, tree_order_statistics_node_update> Set;
+Set st;
+int main () {
+    cin >> n;
+    For(i, 1, n+1){
+        cin >> A[i];
+        P[A[i]] = i;
+    }
+    For(i, 1, n+1) {
+        int count = st.order_of_key(P[i]);
+        ans += i - count - 1 - min(count, i - count - 1);
+        int mid = ((i - 1) >> 1) + 1;
+        if (mid <= count) {
+            ans += P[i] + mid - *st.find_by_order(mid - 1) - count - 1;
+        }
+        mid = i >> 1;
+        if (mid > count){
+            ans += *st.find_by_order(mid - 1) - P[i] - mid + count;
+        }
+        st.insert(P[i]);
+        cout << ans << ' ';
+    }
+}
+
+********************************************************************

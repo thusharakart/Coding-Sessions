@@ -1,0 +1,38 @@
+Problem Authour: Rusiru Thushara (E/16/369)
+https://www.hackerrank.com/contests/competitive-programming-challange/challenges/max-swap-array
+
+*********************************************************
+Authour's sloution.py
+---------------------------------------------------------
+
+def read():return list(map(int,input().split()))
+for _ in range(int(input())):
+    n, k = read()
+    a = sorted(read())
+    b = sorted(read())
+    ans = sum(a[k:])
+    for i in range(k):
+        ans += max(a[i],b[~i])
+    print(ans)
+
+*********************************************************
+
+At the competition time : by e17_isuri
+---------------------------------------------------------
+t=int(input())
+for i in range(t):
+    n,k=list(map(int,input().strip().split()))
+    nimal=list(map(int,input().strip().split()))
+    kamal=list(map(int,input().strip().split()))
+    nimal.sort()
+    kamal.sort(reverse=True)
+    sumnimal=sum(nimal)
+    
+    for i in range(k):
+        
+        if (sumnimal< sum(nimal)-nimal[i]+kamal[i]):
+            nimal[i]=kamal[i]
+            sumnimal=sum(nimal)
+    print(sum(nimal))
+
+*********************************************************
