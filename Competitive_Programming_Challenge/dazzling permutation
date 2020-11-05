@@ -4,7 +4,7 @@ https://www.hackerrank.com/contests/competitive-programming-challange/challenges
 *********************************************************
 Authour's sloution.cpp
 ---------------------------------------------------------
-
+```cpp
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp> 
 #define For(i,a,n) for(int i=a; i<n; ++i)
@@ -37,5 +37,5 @@ int main () {
         cout << ans << ' ';
     }
 }
-
+```
 ********************************************************************
