@@ -1,8 +1,8 @@
-Problem Authour: Rusiru Thushara (E/16/369)
+Problem Author: Rusiru Thushara (E/16/369)
 https://www.hackerrank.com/contests/competitive-programming-challange/challenges/max-swap-array
 
 *********************************************************
-Authour's sloution.py
+Author's sloution.py
 ---------------------------------------------------------
 
 def read():return list(map(int,input().split()))
