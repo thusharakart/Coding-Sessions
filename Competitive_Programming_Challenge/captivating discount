@@ -1,8 +1,8 @@
-# Problem Authour: Rusiru Thushara (E/16/369)
+# Problem Author: Rusiru Thushara (E/16/369)
 https://www.hackerrank.com/contests/competitive-programming-challange/challenges/interesting-subarray
 
 **************************************************
-Authour's solution.cpp
+Author's solution.cpp
 --------------------------------------------------
 #include <bits/stdc++.h>
 using namespace std;
