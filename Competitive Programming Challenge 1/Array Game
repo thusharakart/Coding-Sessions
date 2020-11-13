@@ -1,0 +1,83 @@
+Author: Dinindu Udana ( E/16/366 )
+
+url: https://www.hackerrank.com/contests/competitive-programming-challenge-1/challenges/another-gcd
+
+***************************************************************************************************
+Author's solution.py
+---------------------------------------------------------------------------------------------------
+import math
+
+facArr = set()
+
+# A function to print all prime factors of  
+# a given number n 
+def primeFactors(n): 
+    global facArr
+    # Print the number of two's that divide n 
+    if (n%2 == 0):
+        facArr.add(2)
+        n = n // 2
+
+    while n % 2 == 0: 
+        n = n // 2
+          
+    # n must be odd at this point 
+    # so a skip of 2 ( i = i + 2) can be used 
+    for i in range(3,int(math.sqrt(n))+1,2): 
+          
+        # while i divides n , print i ad divide n 
+        while n % i== 0: 
+            facArr.add(i)
+            n = n // i 
+              
+    # Condition if n is a prime 
+    # number greater than 2 
+    if n > 2: 
+        facArr.add(n)
+
+# taking inputs    
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+# taking all prime nubers of the first set a[0] and b[0]
+primeFactors(a[0])
+primeFactors(b[0])
+
+factors = sorted(list(facArr))
+
+for factor in factors:
+    for i in range(1, n):
+        if a[i]%factor != 0 and b[i]%factor != 0:
+            break
+    else:
+        print(factor)
+        break
+else:
+    print(-1)
+
+
+***************************************************************************************************
+
+At the competition by e17_Savindu solution.py
+---------------------------------------------------------------------------------------------------
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+
+its = max(max(a), max(b))
+
+state = False
+for i in range(2, its+1):
+    state = True
+    for j in range(n):
+        if(a[j]%i==0 or b[j]%i==0):
+            continue
+        else:
+            state = False
+            break
+    if(state):
+        print(i)
+        break
+
+*******************************************************************************************************

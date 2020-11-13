@@ -1,0 +1,40 @@
+Author: Rusiru Thushara ( E/16/369 )
+
+url: https://www.hackerrank.com/contests/competitive-programming-challenge-1/challenges/best-friends-ever
+
+*********************************************************************************************************
+
+Author's solution.py
+---------------------------------------------------------------------------------------------------------
+
+def solve(n, arr, s):
+
+    dp = [[[0 for ___ in range(s//3+1)] for __ in range(s//3+1)] for _ in range(n+1)]
+
+    dp[0][0][0] = 1
+
+    for i in range(1,n+1):
+        for j in range(s//3+1):
+            for k in range(s//3+1):
+                cond1 = dp[i-1][j][k]
+                cond2 = dp[i-1][j-arr[i-1]][k] if (j-arr[i-1] >= 0) else False
+                cond3 = dp[i-1][j][k-arr[i-1]] if (k-arr[i-1] >= 0) else False
+                if cond1 or cond2 or cond3:
+                    dp[i][j][k] = 1
+
+    return dp[n][s//3][s//3]
+
+
+for _ in range(int(input())):
+    n = int(input())
+    arr = list(map(int, input().split()))
+    ans = 0
+    s = sum(arr)
+    if (s%3 != 0):
+        ans = 0
+    else: 
+        ans = solve(n,arr,s)
+
+    print( "Possible" if ans else "Impossible")
+
+*********************************************************************************************************

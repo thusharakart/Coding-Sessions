@@ -1,0 +1,57 @@
+Author: Nuwan Harsha ( E/16/286 )
+
+url : https://www.hackerrank.com/contests/competitive-programming-challenge-1/challenges/save-sherlock-1
+
+********************************************************************************************************
+Author's solution.java
+--------------------------------------------------------------------------------------------------------
+import java.io.*;
+import java.math.*;
+import java.util.*;
+
+
+class Solution {
+    // Returns the reverse of the given string.
+    public static String reverse(String s) {
+        return new StringBuilder(s).reverse().toString();
+    }
+    // Tests whether the given string is a palindrome.
+    public static boolean isPalindrome(String s) {
+        return s.equals(reverse(s));
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int k = in.nextInt();
+        long sum = 0;
+        for (int i = 1; i < n; i++) {
+            if (isPalindrome(Integer.toString(i, 10)) && isPalindrome(Integer.toString(i, k)))
+                sum += i;
+        }
+        System.out.println(sum);
+
+    }
+}
+
+************************************************************************************************************
+
+At the competition time by e17_shakthi solution.py
+------------------------------------------------------------------------------------------------------------
+
+def dpalindrome(n,k):
+    numberbase = []
+    while n>= k:
+        numberbase.append(str(n%k))
+        n = n//k
+    numberbase.append(str(n))
+    revers = numberbase[::-1]
+    return numberbase == revers
+
+N, K = [int(i) for i in input().split()]
+sum = 0
+for i in range(1,N):
+    if dpalindrome(i,10) and dpalindrome(i,K):
+        sum += i
+print(sum)
+
+************************************************************************************************************

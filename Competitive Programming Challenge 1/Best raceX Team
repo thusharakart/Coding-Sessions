@@ -1,0 +1,73 @@
+Author : Sudam Kalpage ( E/16/168 )
+
+url : https://www.hackerrank.com/contests/competitive-programming-challenge-1/challenges/min-stars-to-spare
+
+***********************************************************************************************************
+
+Author's solution.py
+-----------------------------------------------------------------------------------------------------------
+
+import sys
+for _ in range(int(input())):
+    # inputs
+    n, p = list(map(int,input().split()))
+    A = list(map(int,input().split()))
+    A.sort()
+
+    # prefix array
+    prefix = [A[0]]
+    for i in range(1, n):
+        prefix.append(prefix[i - 1] + A[i])
+    # print(prefix)
+
+    min = sys.maxsize
+    for i in range(n - p + 1):
+        if i != 0:
+            stars = ((p - 1) * A[i + p - 1] - prefix[i + p - 2] + prefix[i - 1])
+        else:
+            stars = ((p - 1) * A[i + p - 1] - prefix[i + p - 2])
+        # print(stars)
+        if min > stars:
+            min = stars
+    print(min)
+
+***********************************************************************************************************
+
+At the competition by e16_praditha solution.cpp
+-----------------------------------------------------------------------------------------------------------
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <bits/stdc++.h> 
+using namespace std;
+
+
+int main() {
+ 
+    int T,n,p;
+    cin >> T;
+    for(int t = 0; t < T; t++){
+        int arr[100001];
+        cin >> n >> p;
+        for(int i = 0; i < n; i++){
+            cin >> arr[i];
+        }
+        sort(arr, arr+n);
+        int first_set = 0;
+        for(int i = 0; i < p; i++){
+            first_set += arr[p - 1] - arr[i];
+        }
+        int ans = first_set;
+        for(int i = p; i < n; i++){
+            first_set += (arr[i] - arr[i - 1]) * (p - 1) - arr[i - 1] + arr[i - p];
+            ans = min(ans, first_set);
+        }
+        cout << ans <<'\n';
+    }
+    return 0;
+}
+
+******************************************************************************************************************
