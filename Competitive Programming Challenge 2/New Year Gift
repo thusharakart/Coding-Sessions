@@ -1,0 +1,70 @@
+Problem Author: Rusiru Thushara ( E/16/369 )
+email: thusharakart@gmail.com
+
+Problem :: https://www.hackerrank.com/contests/competitive-programming-challenge-2/challenges/new-year-gift-1
+*****************************************************************************************
+
+Author's solution.cpp 
+-----------------------------------------------------------------------------------------
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int t; cin >> t; 
+    while(t--){
+        int p, q, r, n;
+        cin >> p >> q >> r >> n;
+        if((p+q+r+n)%3 == 0 && (p+q+r+n)/3 >= max(max(p,q),r)){
+            cout << "Possible" << endl;
+        } else {
+            cout << "Impossible" << endl;
+        }
+    }
+    return 0;
+}
+
+******************************************************************************************
+Competition time by e17_Akila solution.cpp
+------------------------------------------------------------------------------------------
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        int arr[3];
+        cin>>arr[0]>>arr[1]>>arr[2]>>n;
+        
+        sort(arr,arr+3);
+        int a=(2*arr[2]-(arr[0]+arr[1]));
+        if(a<=n){
+            if(a==n){
+                cout<<"Possible\n";    
+            }
+            else{
+                if((n-a)%3==0)
+                    cout<<"Possible\n";
+                else{
+                    cout<<"Impossible\n";
+                }
+            }
+        }
+        else{
+            cout<<"Impossible\n";
+        }
+        
+    }
+  
+    return 0;
+}
+
+**********************************************************************************************

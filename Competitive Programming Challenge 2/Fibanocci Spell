@@ -1,0 +1,74 @@
+Problem Author: Nuwan Harsha ( E/16/286 )
+
+Problem :: https://www.hackerrank.com/contests/competitive-programming-challenge-2/challenges/fibanocci-spell
+*****************************************************************************************
+
+Author's solution.java
+-----------------------------------------------------------------------------------------
+
+import java.math.*;
+import java.util.*;
+
+class Solution {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int i = 0 ; i < t ; i++){
+            long n = in.nextLong();
+            System.out.println(fib(n));
+        }
+    }
+
+    /*
+     * Fast doubling method.
+     * F(2n) = F(n) * (2*F(n+1) - F(n)).
+     * F(2n+1) = F(n+1)^2 + F(n)^2.
+     */
+    private static BigInteger fib(long n) {
+        BigInteger a = BigInteger.ZERO;
+        BigInteger b = BigInteger.ONE;
+        for (int i = 64 - Long.numberOfLeadingZeros(n); i >= 0; i--) {
+            BigInteger d = mul(a,sub(b.shiftLeft(1),a));
+            BigInteger e = add(mul(a,a),mul(b,b));
+            a = d;
+            b = e;
+            if (((n >>> i) & 1) != 0) {
+                BigInteger c = add(a,b);
+                a = b;
+                b = c;
+            }
+        }
+        return a;
+    }
+
+    public static final BigInteger MOD = BigInteger.valueOf(1000000000L);
+
+    public static BigInteger add(BigInteger a, BigInteger b) {// a + b
+        return (a.mod(MOD).add(b.mod(MOD))).mod(MOD);
+    }
+
+    public static BigInteger sub(BigInteger a, BigInteger b) { // a - b
+        return (a.mod(MOD).subtract(b.mod(MOD)).add(MOD)).mod(MOD);
+    }
+
+    public static BigInteger mul(BigInteger a, BigInteger b) { //  a * b
+        return (a.mod(MOD)).multiply(b.mod(MOD)).mod(MOD);
+    }
+}
+
+******************************************************************************************
+Problem tester's solution.py ( by Rusiru Thushara (E/16/369))
+------------------------------------------------------------------------------------------
+
+mod = 1000000000
+def fib (n):
+    if n == 0: return (0, 1)
+    p = fib(n >> 1)
+    c = ((p[0]%mod) * (2 * p[1] - p[0])%mod)%mod
+    d = (pow(p[0],2)%mod  + pow(p[1],2)%mod)%mod
+    if n&1: return (d, (c + d)%mod)
+    return (c, d)
+for i in range(int(input())):
+    print(fib(int(input()))[0])
+
+**********************************************************************************************

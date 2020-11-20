@@ -1,0 +1,37 @@
+Problem Author: Sudam Kalpage ( E/16/168 )
+
+Problem :: https://www.hackerrank.com/contests/competitive-programming-challenge-2/challenges/lava-floor
+*****************************************************************************************
+
+Author's solution.py
+-----------------------------------------------------------------------------------------
+D,K=[int(x) for x in input().split()]
+a=[int(x) for x in input().split()]
+
+sub_sum=sum(a[:K])  # first subarray sum
+min_sum=sub_sum     # minimum subarray sum
+for i in range(D-K-1):
+    sub_sum = sub_sum - a[i] + a[i + K ]
+    min_sum=min(min_sum,sub_sum)
+print(min_sum)
+
+
+******************************************************************************************
+Problem tester's solution.cpp ( by Rusiru Thushara (E/16/369))
+------------------------------------------------------------------------------------------
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main(){
+    int d, k; cin >> d >> k; int arr[d-1];
+    for(int i = 0; i < d-1; ++i) cin >> arr[i];
+    ll k_sum = accumulate(arr, arr+k, 0);
+    ll m = k_sum;
+    for(int i = 0; i < d-k-1; ++i)
+        m = min(m, k_sum += arr[i+k] - arr[i]);  
+    cout << m << endl;
+    return 0;
+}
+
+**********************************************************************************************
