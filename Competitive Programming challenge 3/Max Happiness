@@ -1,0 +1,49 @@
+Problem Author: Rusiru Thushara ( E/16/369 )
+
+url : https://www.hackerrank.com/contests/competitive-programming-challenge-3/challenges/max-happiness
+
+**************************************************************************************************
+Author's solution.cpp
+--------------------------------------------------------------------------------------------------
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int to[300005], n, m, cnt, ans;
+vector<int> adj[300005], dp[300005];
+string str;
+
+int main(){
+    ios_base::sync_with_stdio(0);
+
+    cin >> n >> m >> str;
+    str = '#' + str;
+    
+    for (int x, y; m--; adj[x].push_back(y), ++to[y])
+        cin >> x >> y;
+    
+    queue<int> q;
+    for (int i = 1; i <= n; dp[i++].resize(26, 0))
+        if (!to[i]) q.push(i);
+    
+    for (; !q.empty(); ++cnt){
+        int u = q.front();
+        ++dp[u][str[u] - 'a'];
+        q.pop();
+        
+        ans = max(ans, *max_element(dp[u].begin(), dp[u].end()));
+        
+        for (auto i : adj[u]){
+            
+            for (int j = 0; j < 26; ++j)
+                dp[i][j] = max(dp[i][j], dp[u][j]);
+            if (!--to[i])
+                q.push(i);
+        }
+    }
+    cout << (cnt != n ? -1 : ans);
+}
+
+
+**************************************************************************************************

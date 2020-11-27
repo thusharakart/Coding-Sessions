@@ -1,0 +1,28 @@
+Problem Author: Nuwan Harsha ( E/16/286 )
+
+url : https://www.hackerrank.com/contests/competitive-programming-challenge-3/challenges/finding-absent-students
+
+**************************************************************************************************
+Author's solution.java
+--------------------------------------------------------------------------------------------------
+
+import java.util.*;
+
+class Solution {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        boolean[] arr = new boolean[n+1];
+        for(int i = 0;i < n;i++){
+            arr[in.nextInt()] = true;
+        }
+        for (int i = 1; i <= n; i++) {
+            if(!arr[i]){
+                System.out.print(i+" ");
+            }
+        }
+    }
+}
+
+
+**************************************************************************************************

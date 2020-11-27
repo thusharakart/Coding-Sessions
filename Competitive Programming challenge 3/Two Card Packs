@@ -1,0 +1,29 @@
+Problem Author: Dinindu Udana ( E/16/366 )
+
+url : https://www.hackerrank.com/contests/competitive-programming-challenge-3/challenges/two-card-packs
+
+**************************************************************************************************
+Author's solution.py
+--------------------------------------------------------------------------------------------------
+
+from collections import Counter
+
+n = int(input())
+a = list(input())
+m  = int(input())
+b = list(input())
+
+# converting to counter dictionaries
+a = Counter(a)
+count = 0
+
+# looping through the b array
+for val in b:
+    if val in a:
+        if a[val] > 0:
+            count += 1
+            a[val] -= 1
+            
+print(count)
+
+**************************************************************************************************
