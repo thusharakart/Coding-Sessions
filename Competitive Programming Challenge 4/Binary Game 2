@@ -1,0 +1,64 @@
+Competition Owner: Rusiru Thushara
+Problem Author: Dinindu Thilakarathne
+
+Problem :: https://www.hackerrank.com/contests/competitive-programming-challenge-4/challenges/binary-game-2
+*****************************************************************************************
+
+Author's solution.py
+-----------------------------------------------------------------------------------------
+    
+    n, t = map(int, input().split())
+    a = int(input(), 2)
+    b = int(input(), 2)
+
+    for _ in range(t):
+        x = input().split()        
+
+        if (x[0] == "change_A"):
+            num = int(x[1])
+            num2 = x[2]
+            if num2 == "1":
+                a = a | ( 1 << num )
+            else:
+                a = a & ~( 1 << num )
+
+        elif (x[0] == "change_B"):
+            num = int(x[1])
+            num2 = x[2]
+            if num2 == "1":
+                b = b | ( 1 << num )
+            else:
+                b = b & ~( 1 << num )
+
+        else:
+            num = int(x[1])
+
+            c = ((a + b)>>(num))&1            
+            print(c, end = '')
+
+
+****************************************************************************************
+
+
+Problem tester's solution.py ( by Rusiru Thushara (E/16/369))
+----------------------------------------------------------------------------------------
+
+    a, b = map(int, input().split())
+    A = int(input(),2)
+    B = int(input(),2)
+
+    for i in range(b):
+        op = input().split()
+        if(op[0]) == 'change_A':
+            if(op[2] == '1'):
+                A |= (1<<int(op[1]))
+            else:
+                A &= ~(1<<int(op[1]))
+        elif(op[0]) == 'change_B':
+            if(op[2] == '1'):
+                B |= (1<<int(op[1]))
+            else:
+                B &= ~(1<<int(op[1]))
+        else:print(((A+B)>>(int(op[1])))&1, end = '')
+
+***************************************************************************************

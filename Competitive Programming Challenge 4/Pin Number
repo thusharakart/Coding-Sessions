@@ -1,0 +1,14 @@
+Competition Owner: Rusiru Thushara
+Problem Author: Sudam Kalpage
+
+Problem :: https://www.hackerrank.com/contests/competitive-programming-challenge-4/challenges/pin-number
+*****************************************************************************************
+
+Author's solution.py
+-----------------------------------------------------------------------------------------
+n=int(input())
+if n==0:
+    print(1)
+else:
+    binary=bin(n).replace("0b", "")
+    print(2**(binary.count('0')))
